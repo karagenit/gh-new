@@ -8,11 +8,11 @@ options = {}
 OptionParser.new do |parser|
     parser.banner = "Usage: gh-new REPO [OPTIONS]"
 
-    parser.on('-u', '--username USERNAME', 'Github Username.') do |username| # TODO --uname, --login
-        options[:user] = username
+    parser.on('-u', '--username USERNAME', '--uname USERNAME', '--login USERNAME', 'Github Username.') do |username|
+        options[:login] = username
     end
 
-    parser.on('-p', '--password PASSWORD', 'Github Password.') do |password| # TODO --pword
+    parser.on('-p', '--password PASSWORD', '--pword PASSWORD', 'Github Password.') do |password|
         options[:password] = password
     end
 
@@ -35,9 +35,9 @@ unless conf == "y" || conf == "yes"
     exit
 end
 
-if options[:user].nil?
+if options[:login].nil?
     print "Username: "
-    options[:user] = gets.chomp
+    options[:login] = gets.chomp
 end
 
 if options[:password].nil?
@@ -49,7 +49,7 @@ end
 
 # TODO read git credentials
 
-client = Octokit::Client.new(:login => options[:user], :password => options[:password]) # TODO can we rename options[:user] to options[:login] and just pass the hash?
+client = Octokit::Client.new(:login => options[:login], :password => options[:password]) # TODO can we rename options[:user] to options[:login] and just pass the hash?
 
 client.create_repository(options[:repo])
 
