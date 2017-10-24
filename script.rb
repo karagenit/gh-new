@@ -49,7 +49,7 @@ end
 
 # TODO read git credentials
 
-client = Octokit::Client.new(:login => options[:login], :password => options[:password]) # TODO can we rename options[:user] to options[:login] and just pass the hash?
+client = Octokit::Client.new(options)
 
 client.create_repository(options[:repo])
 
