@@ -11,7 +11,7 @@ if name.nil?
     exit
 end
 
-puts "Make Repo with name #{name}?"
+print "Create repository with name \"#{name}\"? (y/n): "
 conf = gets.chomp.downcase
 unless conf == "y" || conf == "yes"
     puts "Cancelled."
