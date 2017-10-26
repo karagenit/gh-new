@@ -8,8 +8,8 @@ options = {}
 OptionParser.new do |parser|
   parser.banner = 'Usage: gh-new REPO [OPTIONS]'
 
-  parser.on('-u', '--username USERNAME', '--uname USERNAME',
-            '--login USERNAME', 'Github Username.') do |username|
+  parser.on('-u', '--login USERNAME',
+            'Github Username.') do |username|
     options[:login] = username
   end
 
